@@ -176,3 +176,22 @@ footer{
   padding: 10px;
   padding-top: 5px;
 }
+main{
+  display: flex;
+  flex-direction: column;
+  justify-items: end;
+}
+.admin-but{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 30px;
+  justify-content: end;
+  display: flex;
+  color: #f54272;
+  font-weight: 600;
+  text-decoration: none;
+}
+.admin-but:hover{
+  text-decoration: none;
+  color: #f5c542;
+}
