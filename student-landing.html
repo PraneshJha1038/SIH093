@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Instdent • Student Dashboard</title>
+    <link rel="stylesheet" href="css/student_landing.css">
+</head>
+
+<body>
+    <header class="header" role="banner">
+        <button id="sidebar-toggle" class="header__hamburger" aria-label="Open navigation">
+            <span class="hamburger__bar"></span>
+            <span class="hamburger__bar"></span>
+            <span class="hamburger__bar"></span>
+        </button>
+
+        <div class="header__brand">
+            <a href="student_landing.html" class="brand">
+                <img src="img/sih31x32.png" alt="Instdent logo" class="brand__logo" width="32" height="32" />
+                <span class="brand__name">Instdent Student Dashboard</span>
+            </a>
+        </div>
+
+        <div class="header__profile" aria-hidden="false">
+            <span class="profile__name">Vishesh Jha</span>
+            <img class="profile__avatar" src="/img/pig_256x256.png" alt="Student avatar" width="32" height="32" />
+        </div>
+    </header>
+    <div class="layout">
+        <aside id="sidebar" class="sidebar" aria-label="Primary navigation">
+            <nav class="sidebar__nav">
+                <a class="sidebar__link sidebar__link--active" href="#dashboard">Dashboard</a>
+
+                <details class="sidebar__details">
+                    <summary class="sidebar__summary">Academic Preparation</summary>
+                    <div class="sidebar__sub">
+                        <a class="sidebar__sublink" href="#notes">Notes</a>
+                        <a class="sidebar__sublink" href="#internships">Internships</a>
+                        <a class="sidebar__sublink" href="#placement">Placement Hub</a>
+                    </div>
+                </details>
+
+                <a class="sidebar__link" href="#doubts">Doubt Discussion</a>
+                <a class="sidebar__link" href="#profile">Profile</a>
+                <a class="sidebar__link" href="#logout">Logout</a>
+            </nav>
+        </aside>
+        <main class="main" id="main" role="main">
+            <section class="hero" aria-labelledby="hero-title">
+                <h1 id="hero-title" class="hero__title">Welcome back, Vishesh</h1>
+                <p class="hero__subtitle">Overview of your academic records, certificates and activities.</p>
+            </section>
+            <section class="cards" aria-label="Student quick stats">
+                <article class="card" id="attendance">
+                    <div class="card__head">
+                        <h2 class="card__title">Attendance</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="card__metric">85%</div>
+                        <div class="card__meta">Semester 3</div>
+                    </div>
+                    <div class="card__foot">
+                        <a class="card__action" href="#attendance-details">View details</a>
+                    </div>
+                </article>
+                <article class="card" id="certificates">
+                    <div class="card__head">
+                        <h2 class="card__title">Certificates</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="card__metric">6 uploaded</div>
+                        <div class="card__meta">Verified: 4</div>
+                    </div>
+                    <div class="card__foot">
+                        <a class="card__action" href="#certificates-list">Manage</a>
+                    </div>
+                </article>
+
+                <article class="card" id="conferences">
+                    <div class="card__head">
+                        <h2 class="card__title">Conferences & Workshops</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="card__metric">3</div>
+                        <div class="card__meta">This academic year</div>
+                    </div>
+                    <div class="card__foot">
+                        <a class="card__action" href="#conferences-list">View</a>
+                    </div>
+                </article>
+
+                <!-- Card 4: Achievements -->
+                <article class="card" id="achievements">
+                    <div class="card__head">
+                        <h2 class="card__title">Achievements</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="card__metric">2</div>
+                        <div class="card__meta">Awards & Competitions</div>
+                    </div>
+                    <div class="card__foot">
+                        <a class="card__action" href="#achievements-list">See all</a>
+                    </div>
+                </article>
+
+                <!-- Card 5: Internships -->
+                <article class="card" id="internships">
+                    <div class="card__head">
+                        <h2 class="card__title">Internships</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="card__metric">1 active</div>
+                        <div class="card__meta">Company XYZ (May - Jul)</div>
+                    </div>
+                    <div class="card__foot">
+                        <a class="card__action" href="#internships-list">Details</a>
+                    </div>
+                </article>
+
+                <!-- Card 6: Portfolio -->
+                <article class="card" id="portfolio">
+                    <div class="card__head">
+                        <h2 class="card__title">Verified Portfolio</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="card__metric">Auto-generated</div>
+                        <div class="card__meta">PDF & shareable link</div>
+                    </div>
+                    <div class="card__foot">
+                        <a class="card__action" href="#portfolio-download">Download</a>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">&copy; 2025 Instdent — Empowering students with a complete digital record.</div>
+    </footer>
+
+    <script>
+        (function () {
+            const toggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('sidebar');
+
+            const sb = sidebar || document.querySelector('.sidebar');
+
+            toggle.addEventListener('click', () => {
+                if (sb) sb.classList.toggle('sidebar--open');
+                toggle.classList.toggle('is-active');
+            });
+
+            
+            document.addEventListener('click', (e) => {
+                const outside = !e.target.closest('.sidebar') && !e.target.closest('#sidebar') && !e.target.closest('#sidebar-toggle');
+                if (outside && sb && sb.classList.contains('sidebar--open')) {
+                    sb.classList.remove('sidebar--open');
+                    toggle.classList.remove('is-active');
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
